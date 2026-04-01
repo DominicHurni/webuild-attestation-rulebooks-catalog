@@ -1,31 +1,50 @@
 * Template version: 1.1, 20-08-2025
 
 
-# Attestation Rulebook for attestations of type *ADD THE ATTESTATION TYPE HERE*
+# Attestation Rulebook for attestations of type *Contact Person*
 
 *Provide information about the author(s) of this Rulebook in the following form:*
 
-* Author(s): 
+* * Author(s): 
     * [Dominic Hurni, SBB - Swiss Federal Railways]
-* Previous Authors
-    * -
+    * [Werner Folkendt, Bosch]
+   
 
 *Provide versioning information about the Rulebook in the following form:*
 
 | Version          | Date               | Description                            |
 |------------------|--------------------|----------------------------------------|
 | [0.1] | [30.03.2026] | [Initial Draft] |
-| [VERSION NUMBER] | [PUBLICATION DATE] | [DESCRIPTION OR LINK TO THE CHANGELOG] |
 
-*Provide a contact email address and/or a link to an issue tracking system that can be used for
-providing feedback, e.g.:* 
 
 **Feedback:**
-  *  https://example.com/tracker 
+  *  dominic.hurni@sbb.ch
 
 ## 1 Introduction
 
 ### 1.1 Document scope and purpose
+**Definition** <br>
+
+Product and disciplin related contact person. E.g. Productgroup: Industry Battery >2kW / Discipline: Logistics <br>
+=> [contactPoint](https://webuild-consortium.github.io/wp4-semantics-group/ebwv//vocabulary.html#contactPoint) insufficent.
+
+
+**Purpose** <br>
+Cross-company communication is daily business in supply management. To know the correct and valid contact persons for different issues (e.g. finance, product, quality, logistic ...) is crucial to do efficient business in onboarding pre-contracting or contracting phase. In the onboarding process minimum one contact person is needed. 
+The add value for organizations to have “Contact Person” as an attestation is to automate onboarding and maintaining process of contact person data. That increases data accuracy and liability to do fast and save business.
+
+
+**Scope** <br>
+Attestation flows only between organizations, where business exists. The use cases of this attestations are for example:
+
+*Relying party*
+    • Logistic employees have instant valid logistic contact persons data available. E.g. Wrong delivered battery cell. Employee contacts sale by e-mail or phone. 
+    • Wallet of relying party validates revocation status of contact persons data. Workflow into internal systems follows e.g. master data management. Administrative employees receive message if a contact person is not valid anymore. 
+
+*Holder*
+    • Administrative employee receives request from procurer to deliver contact persons sale, production, finance and quality for product battery cell. Holder company has issued attestation “contact person” for all its employees to itself (company wallet), so employees system will enter fitting employee to answer request e.g. battery cell sales contact person. e.g. Key account manager. 
+    • Holder is responsible for life cycle of attestation. E.g. revocation, change of role. 
+
 
 *Provide a concise explanation of the purpose of the defined attestation type, explicitly stating 
 why it exists and what its primary objective is within the context of the EUDI Wallet ecosystem*
@@ -153,9 +172,15 @@ avoid natural-language ambiguities.*
 
 ### 2.2 Mandatory attributes
 
-| **Data Identifier** | **Definition**          | **Data type**     | **Example value** |
-|---------------------|-------------------------|-------------------|-------------------|
-| *Provide a value*   | *Provide succinct text* | *Provide a value* | *Provide a value* |
+| **Data Identifier** | **Definition**          | **Data type**     | **Example value** | **attestation_legal_category**| 
+|---------------------|-------------------------|-------------------|-------------------|-------------------------------|
+| legalEntityId | [the unambiguous structured reference assigned to the legal entity by the legal authority that registered it](https://webuild-consortium.github.io/wp4-semantics-group/ebwv//vocabulary.html#legalIdentifier) | string | EBW-OID / LEI / DUNS / EORI / VAT-ID / BPNL / GLN / SIREN | QEAA |
+| legalEntityName |[the name under which the legal entity is registered ](https://webuild-consortium.github.io/wp4-semantics-group/ebwv//vocabulary.html#legalName)  | string | SBB Schweizererische Bundesbahnen AG | QEAA |
+| organisationAffiliation | confirmes a persons organisational affiliation to a legal entity | Eduard Example is employeed by SBB | self-attested non-qualified-EAA |
+| namePerson | name of person | string | Eduard Example | QEAA OR self-attested non-qualified-EAA |
+| role | role of employee within legal entity | string | logistic key account manager for SBB | self-attested non-qualified-EAA |
+| email | email adress of employee within legal entity | email adress | employee@heyyou.com | self-attested non-qualified-EAA | 
+| telephone | telephone number of employee within legal entity | telephone number | employee@heyyou.com | self-attested non-qualified-EAA |
 
 
 ### 2.3 Optional attributes
