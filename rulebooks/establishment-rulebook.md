@@ -8,6 +8,8 @@
 * Author(s): 
     * [Dominic Hurni, SBB - Swiss Federal Railways]
     * [Werner Folkendt, Bosch]
+    * [Arjen Ketelaar, Portbas]
+
 
 *Provide versioning information about the Rulebook in the following form:*
 
