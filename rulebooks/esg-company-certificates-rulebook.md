@@ -1,34 +1,48 @@
 * Template version: 1.1, 20-08-2025
 
 
-# Attestation Rulebook for attestations of type *ADD THE ATTESTATION TYPE HERE*
-
-*Provide information about the author(s) of this Rulebook in the following form:*
+# *Provide information about the author(s) of this Rulebook in the following form:*
 
 * Author(s): 
     * [Dominic Hurni, SBB - Swiss Federal Railways]
-* Previous Authors
-    * -
+    * [Werner Folkendt, Bosch]
 
 *Provide versioning information about the Rulebook in the following form:*
 
 | Version          | Date               | Description                            |
 |------------------|--------------------|----------------------------------------|
-| [0.1] | [30.03.2026] | [Initial Draft] |
-| [VERSION NUMBER] | [PUBLICATION DATE] | [DESCRIPTION OR LINK TO THE CHANGELOG] |
+| [0.1] | [30.03.2026] | [First Draft] |
 
-*Provide a contact email address and/or a link to an issue tracking system that can be used for
-providing feedback, e.g.:* 
+
 
 **Feedback:**
-  *  https://example.com/tracker 
+  *  dominic.hurni@sbb.ch
+
 
 ## 1 Introduction
 
 ### 1.1 Document scope and purpose
 
-*Provide a concise explanation of the purpose of the defined attestation type, explicitly stating 
-why it exists and what its primary objective is within the context of the EUDI Wallet ecosystem*
+**Definition** <br>
+Company certificates e.g. ISO 9001/ISO 14001 are confirmations for a company issued by a certified body.  
+
+**Purpose** <br>
+Such certificates are requested from companies during onbording and contracting phase within KYS Know Your Supplier process to estimate their effort regarding ESG - Environmental Social Governance and others.   
+
+**Scope** <br>
+The  Company Certificate attestation is based on the schema defined in this document. We have verified that the schema can be used at least for the following explicitly mentioned type of certificates ISO9001, IATF16949, DIN EN ISO 45001, DIN EN ISO 14001, DIN EN ISO 50001, AEO, … and others.
+
+Company certificates e.g. ISO contain
+Site Name 
+Site Adress 
+Side Scope
+*Notice*: There is a attestation called "establishment", that can be used synonymly for "Site" and contains following attributes
+Company certificates e.g. ISO contain 
+Site Name 
+Site Adress 
+Side Scope:
+
+[Example ISO 14001 Environment Management System](https://isoregistrar.org/iso-14001-2015-certificate.php)
 
 [RULEBOOK AUTHOR TO DEFINE] 
 
@@ -152,10 +166,26 @@ avoid natural-language ambiguities.*
 
 
 ### 2.2 Mandatory attributes
+Legal entity and Establishment attestations already exist. Assumption that ISO issues non qualified-EAA. Please watch [Example ISO 14001 Environment Management System](https://isoregistrar.org/iso-14001-2015-certificate.php)
 
-| **Data Identifier** | **Definition**          | **Data type**     | **Example value** |
-|---------------------|-------------------------|-------------------|-------------------|
-| *Provide a value*   | *Provide succinct text* | *Provide a value* | *Provide a value* |
+| **Data Identifier** | **Definition**          | **Data type**     | **Example value** | **attestation_legal_category**|
+|---------------------|-------------------------|-------------------|-------------------|-------------------------------|
+|certifiedLegalEntityIdentifier| Identifier of legal entity that receives the certificate | string |
+|certifiedLegalEntityName| Name of legal entity that receives the certificate | string |
+|certifiedLegalEntityAdress| Adress of legal entity that receives the certificate | string |
+|nameOfCertificate| Name of certification | string | ISO 14001:2015| non-qualified-EAA |
+|typeOfCertificate| Typ of certification |string | ISO/EN/DIN /IATF| non-qualified-EAA |
+|registrationNumberOfCertificate| Registration number of certificate | string | CH0045621 | non-qualified-EAA |
+|certificationStartDate| date of start | date | 11.11.2025 |non-qualified-EAA 
+|certificationExpirationDate| date of expiration | date | 11.11.2028 | non-qualified-EAA 
+|issuerLegalEntityIdentifier| Identifier of legal entity that issues the certificate | string | 
+|issuerLegalEntityName|Name of legal entity that issues the certificate | string | 
+|certifiedEstablishmentIdentifier| Identifier of affected establishement | string |
+|certifiedEstablishmentName| Name of affected establishement | string |
+|certifiedEstablishmentAdress| Adress of affected establishment | string |
+|certifiedEstablishmentScopeOfActivity| describes scope of activity of affected establishment | string | Manufacturer of steel rails |
+
+
 
 
 ### 2.3 Optional attributes
