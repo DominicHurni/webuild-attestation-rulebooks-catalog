@@ -1,46 +1,45 @@
 * Template version: 1.1, 20-08-2025
 
 
-# Attestation Rulebook for attestations of type *ADD THE ATTESTATION TYPE HERE*
+# Attestation Rulebook for attestations of type *Establishment*
 
 *Provide information about the author(s) of this Rulebook in the following form:*
 
 * Author(s): 
     * [Dominic Hurni, SBB - Swiss Federal Railways]
     * [Werner Folkendt, Bosch]
-* Previous Authors
-    * -
 
 *Provide versioning information about the Rulebook in the following form:*
 
 | Version          | Date               | Description                            |
 |------------------|--------------------|----------------------------------------|
-| [0.1] | [30.03.2026] | [Initial Draft - <mark>Where to we link changelog to?</mark>] |
-
-<mark>*Provide a  contact email address and/or a link to an issue tracking system that can be used for
-providing feedback, e.g.:*
+| [0.1] | [30.03.2026] | [First Draft] |
 
 
 
 **Feedback:**
-  *  https://example.com/tracker </mark>
+  *  dominic.hurni@sbb.ch
 
 
 ## 1 Introduction
 
 ### 1.1 Document scope and purpose
 
-A site is defined as an operational business establishment conducted by a specific legal entity at a specific physical location. The design intent is to answer the question: “Where does this supplier operate, and which legal entity is responsible for this site?”
-It is NOT designed to answer ownership, nether specific attributes, nor who the legal entity is (that’s the EUCC or DUNSLegalEntity attestation), only linked to a legal entity.  
-Notice: Validity range (scope) of company certificates are subordinated to sites. (e.g. ISO14001 is only valid for side e.g. A, D and F.  Because a manufacturing side has different requirements than a office side)
+**Definition** <br>
+An establishment, or local kind-of-activity unit, is a production unit owned by one enterprise or quasicorporate unit, located on one site, and producing goods or services of mainly one particular type. Establishments include, e.g., factories, shops, market stalls and kiosks. Establishments within public administration include, e.g., tax offices, municipal libraries and health care centres. https://stat.fi/meta/kas/toimipaikka_en.html
 
-Use cases: Transparency in supply chain requires clarity about location and operation of an organisations site to define incoterms, track products or calculate CO2eq emissions. E.g. 
-    * A legal entity delivers goods to 10 other companies and operates from a hired side. 
-    * A legal entity operates in 100 manufacturing sites and has to declare from which site the product is delivered. 
-    * The add value for organisations to have “Establishment” as an attestation, is to automate contracting processes in offering, delivering, creating digital product passports and reporting, customs and other authorities.
+As an enterprise always operates at some location, it has at least one establishment. Most enterprises have a single establishment while the largest enterprises may have numerous establishments in different parts of the country. Furthermore, these may operate in different economic sectors.
 
+**Purpose**
+Establishment attestation provides transparency regarding owenership, location and operation of an establishment. E.g. 
+* Location information to define incoterms, to trace products or to calculate CO2eq emissions... 
+* Operational information to assign ISO Certificates to sprecific estabilshments... 
+* Ownership information for claim management...
+Also authority needs this data to performe economical statistics. 
 
-[RULEBOOK AUTHOR TO DEFINE] 
+**Scope**
+This attestation answers: “Where does this supplier operate, and which legal entity is responsible for this site?”
+It is NOT designed to answer ownership, nether specific attributes, nor describing the legal entity (this is done by EUCC or DUNSLegalEntity attestations), but only linked to a legal entity.  
 
 ### 1.2 Document structure
 
@@ -163,9 +162,16 @@ avoid natural-language ambiguities.*
 
 ### 2.2 Mandatory attributes
 
-| **Data Identifier** | **Definition**          | **Data type**     | **Example value** |
-|---------------------|-------------------------|-------------------|-------------------|
-| *Provide a value*   | *Provide succinct text* | *Provide a value* | *Provide a value* |
+| **Data Identifier** | **Definition**          | **Data type**     | **Example value** | **attestation_legal_category**|
+|---------------------|-------------------------|-------------------|-------------------|-------------------------------|
+| establishmentIdentifier | Unique Identifier for establishment | string | Establishment/Side number of DUNS/GLN/SIRET/Selfattested | non-qualified-EAA OR self-attested |
+| establishmentName | Name given to the establishment | string | Refurbishment Center Bern | non-qualified-EAA OR self-attested |
+| establishmentMainAdress  | Main postal adress of establishment | string | Flora Street 4| non-qualified-EAA OR self-attested |
+| establishmentAdditionalAdess | poster subadress of establishment | string | Gate 2 Flora Street 6 | non-qualified-EAA OR self-attested|
+| establishmentEconomicActivtiy | description of economic activity of establishment | string |[NACE](https://ec.europa.eu/competition/mergers/cases/index/nace_all.html) F42.1 - Construction of roads and railways | non-qualified-EAA OR self-attested |
+| legalEntityId | [the unambiguous structured reference assigned to the legal entity by the legal authority that registered it](https://webuild-consortium.github.io/wp4-semantics-group/ebwv//vocabulary.html#legalIdentifier) | string | EBW-OID / LEI / DUNS / EORI / VAT-ID / BPNL / GLN / SIREN | QEAA |
+| legalEntityName|[the name under which the legal entity is registered ](https://webuild-consortium.github.io/wp4-semantics-group/ebwv//vocabulary.html#legalName)  | string | SBB Schweizererische Bundesbahnen AG | QEAA |
+
 
 
 ### 2.3 Optional attributes
